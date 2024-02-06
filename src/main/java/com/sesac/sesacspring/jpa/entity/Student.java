@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 
 // : 데이터베이스의 필드와 변수의 연관관계가 정의된 친구
 // : db 테이블에 대응되는 하나의 클래스
-@Entity // jpa class Student() {} // 빈 생성자가 필수로 필요하다
+@Entity // class Student() {} // 빈 생성자가 필수로 필요하다
 @NoArgsConstructor
 
 @Table(name = "Student")
