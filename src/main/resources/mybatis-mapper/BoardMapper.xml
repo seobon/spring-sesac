@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sesac.sesacspring.mybatis.mapper.BoardMapper">
+    <select id="boardAll" resultType="com.sesac.sesacspring.mybatis.domain.Board">
+        SELECT board.* FROM board
+    </select>
+    <insert id="insertBoard" parameterType="com.sesac.sesacspring.mybatis.domain.Board">
+<!--        xml 파일로 파라미터로 받을 때에는 여러개의 변수는 받을 수 없어서 꼭 하나로 묶어서 주어야한다.-->
+        insert into board(title, content, writer) values(#{title}, #{content}, #{writer})
+    </insert>
+    <update id="patchBoard" parameterType="com.sesac.sesacspring.mybatis.domain.Board">
+        update board set title = #{title}, content = #{content}, writer = #{writer} where id = #{id}
+    </update>
+    <delete id="deleteBoard" parameterType="Integer">
+        delete from user where id= #{id}
+    </delete>
+    <select id="searchBoard" parameterType="String" resultType="com.sesac.sesacspring.mybatis.domain.Board">
+<!--        동적 쿼리 생성-->
+<!--        조건 1. 검색어가 없으면 전체 검색 ( SELECT board.* FROM board )-->
+<!--        조건 2. 검색어가 있으면 검색어와 제목이 일치하는 것 ( where title = #{word} )-->
+<!--        SELECT * FROM board where title = #{word}-->
+        SELECT * FROM board
+        <where>
+            <if test="word != ''">
+                AND title=#{word}
+            </if>
+        </where>
+    </select>
+</mapper>

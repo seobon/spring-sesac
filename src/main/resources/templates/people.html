@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>실습. Thymeleaf (2)</title>
+<!--    <style>-->
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--        }-->
+
+<!--        th, td {-->
+<!--            border: 1px solid black;-->
+<!--            padding: 8px;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Spring 모델에서 전달받은 personArr을 반복하여 테이블 데이터를 생성합니다 -->
+        <th:block th:each="person : ${personArr}">
+            <tr>
+                <td th:text="${person.name}"></td>
+                <td th:text="${person.age}"></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</body>
+</html>

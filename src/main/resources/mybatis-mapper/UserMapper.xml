@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--제일 위에 엔터라도 하나 치면 동작 안한다.-->
+
+<!--xml 파일 작성법-->
+
+<!-- namespace 는 어떤 인터페이스랑 연결되는건지 적어준다.
+ UserMapper 만 적어도 되지만 경로까지 적어주는게 가장 정확하다. -->
+<mapper namespace="com.sesac.sesacspring.mybatis.mapper.UserMapper">
+    <select id="retreiveAll" resultType="com.sesac.sesacspring.mybatis.domain.User">
+        SELECT user.* FROM user
+    </select>
+</mapper>
