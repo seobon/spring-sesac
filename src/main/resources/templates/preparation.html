@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Preparation</title>
+</head>
+<body>
+    <p th:text=" '안녕.' + ${msg} ">안녕 반가워</p>
+<!--    <div th:[속성]="서버에서 받는 값 및 조건식"></div>-->
+    <span th:text="${hello}">message</span>
+
+    <span th:utext="${hello}">message</span>
+
+    <button th:value="${hello}"></button>
+
+    <div th:with="temp=${msg}+${hello}" th:text="${temp}"></div>
+
+    <div th:switch="${person}">
+        <p th:case="'eunseo'">안녕 주연아</p>
+        <p th:case="'luda'">안녕 루다야</p>
+        <p th:case="*">누구세요?</p>
+    </div>
+
+    <p th:if="${person}=='luda'" th:text="${person}"></p>
+    <p th:unless="${person}=='luda'" th:text="unless입니다."></p>
+
+    <ul>
+        <li th:each="name:${names}">
+            <span th:text="${name}">이름</span>
+        </li>
+    </ul>
+</body>
+</html>
